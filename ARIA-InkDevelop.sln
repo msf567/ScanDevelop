@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{895FDD06-71E5-AD62-2E60-B0DC3BB3B164}") = "ARIA-InkDevelop", "Assembly-CSharp.csproj", "{92D25FA0-86EC-D535-3D37-04ED5B69E7D3}"
+EndProject
+Project("{895FDD06-71E5-AD62-2E60-B0DC3BB3B164}") = "ARIA-InkDevelop", "Assembly-CSharp-Editor-firstpass.csproj", "{F37B9DD3-92AF-2DAF-99F8-9567936A32EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92D25FA0-86EC-D535-3D37-04ED5B69E7D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92D25FA0-86EC-D535-3D37-04ED5B69E7D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92D25FA0-86EC-D535-3D37-04ED5B69E7D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92D25FA0-86EC-D535-3D37-04ED5B69E7D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37B9DD3-92AF-2DAF-99F8-9567936A32EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37B9DD3-92AF-2DAF-99F8-9567936A32EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37B9DD3-92AF-2DAF-99F8-9567936A32EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37B9DD3-92AF-2DAF-99F8-9567936A32EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
