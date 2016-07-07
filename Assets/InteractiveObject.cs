@@ -14,7 +14,8 @@ public class InteractiveObject : MonoBehaviour
 
 	void Update ()
 	{
-	
+		if (interactedWith)
+			GetComponent<Renderer> ().material.color = Color.green;
 	}
 
 	void OnInteract ()

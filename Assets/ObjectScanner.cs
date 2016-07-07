@@ -7,6 +7,7 @@ public class ObjectScanner : MonoBehaviour
 	public float scanProgress = 0;
 	private float scanSpeed = 0.5f;
 	private Camera cam;
+	public InteractiveObject CurrentObject = null;
 
 	void Awake ()
 	{
@@ -17,46 +18,67 @@ public class ObjectScanner : MonoBehaviour
 	{
 		zoomed = Input.GetButton ("Fire2");
 
-		if (zoomed && LookingAtInteractiveObject ()) {
+		SetCurrentObject ();
+		CheckForIncompleteScan ();
+		if (zoomed && CurrentObject != null) {
 			ProgressScan ();
 		} else {
 			ResetScan ();
 		}
+	
 	}
 
-	bool LookingAtInteractiveObject ()
+	void CheckForIncompleteScan ()
+	{
+		if (CurrentObject == null && scanProgress > 0) {
+			ResetScan ();
+		}
+	}
+
+	void SetCurrentObject ()
 	{
 		RaycastHit hit;
 		Ray ray = new Ray (cam.transform.position, cam.transform.forward);
 
 		if (Physics.Raycast (ray, out hit)) {
-			if (hit.transform.gameObject.GetComponent<InteractiveObject> ()) {
-				return true;
+			InteractiveObject potOBJ = hit.transform.gameObject.GetComponent<InteractiveObject> ();
+
+			if (potOBJ == null)
+				return;
+			
+			if (!potOBJ.interactedWith) {
+				CurrentObject = potOBJ;
 			} else {
-				return false;
+				CurrentObject = null;
 			}
 		}
+	}
 
-		return false;
+	void StartScan ()
+	{
+		ResetScan ();
+		Debug.Log ("Starting Scan...");
 	}
 
 	void ProgressScan ()
 	{
-		if (scanProgress >= 1.0f)
-			FinishScan ();
-		
 		scanProgress += scanSpeed * Time.deltaTime;
 		Debug.Log (scanProgress);
+
+		if (scanProgress >= 1.0f)
+			FinishScan ();
 	}
 
 	void FinishScan ()
 	{
 		Debug.Log ("Scan Completed!");
+		CurrentObject.interactedWith = true;
 		ResetScan ();
 	}
 
 	void ResetScan ()
 	{
 		scanProgress = 0;
+		CurrentObject = null;
 	}
 }
